@@ -24,7 +24,6 @@ public class CreditsModel {
     private Color backgroundColor;
     private String backButtonText;
     
-   
     private Language lan;
     
     //CreditsModel default constructor.

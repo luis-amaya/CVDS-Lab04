@@ -3,4 +3,9 @@ target
 /nbproject/
 .idea
 *.iml
+.settings
+.classpath
+.project
+.vscode
+/out
 

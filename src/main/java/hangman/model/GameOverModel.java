@@ -24,7 +24,7 @@ public class GameOverModel {
     private Language lan;
     
     
- 
+
     
     public GameOverModel(Language lan) {
         this.lan=lan;

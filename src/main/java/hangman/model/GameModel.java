@@ -33,7 +33,7 @@ public class GameModel {
     private char[] randomWordCharArray;
     
     
-   
+
     public GameModel(HangmanDictionary dictionary){
         //this.dictionary = new EnglishDictionaryDataSource();
         this.dictionary=dictionary;
