@@ -8,7 +8,7 @@ package hangman.model;
  * 4. Minimun score is 0.
  * @author Luis Amaya
  * @author Sebastian Mina
- * @version 1.0 17/02/2021
+ * @version 1.1 17/02/2021
  */
 public class BonusScore implements GameScore{
 
