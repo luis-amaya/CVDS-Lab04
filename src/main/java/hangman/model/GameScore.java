@@ -7,6 +7,8 @@ package hangman.model;
  */
 public interface GameScore {
 
+    final int MINIMUNSCORE = 0;
+
     /**
      * Calculates the score for the current playing session
      * @pre true
@@ -16,5 +18,5 @@ public interface GameScore {
      * @return int With the score calculateed.
      * @throws GameScoreException 
      */
-    public int calculateScore(int correctCount, int incorrectCount);
+    public int calculateScore(int correctCount, int incorrectCount) throws GameScoreException;
 }

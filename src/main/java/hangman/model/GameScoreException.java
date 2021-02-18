@@ -7,6 +7,7 @@ package hangman.model;
  */
 public class GameScoreException extends Exception{
     public static final String SCORE_NEGATIVE = "Score value is negative";
+    public static final String INVALID_VALUE = "The value is not valid";
 
     public GameScoreException(String message){
         super(message);

@@ -11,10 +11,22 @@ package hangman.model;
  */
 public class OriginalScore implements GameScore{
 
+    private final int initialScore = 100;
+    private final int bonusPoints = 0;
+    private final int penaltyPoints = 10;
+    
+
     @Override
-    public int calculateScore(int correctCount, int incorrectCount) {
-        // TODO Auto-generated method stub
-        return 0;
+    public int calculateScore(int correctCount, int incorrectCount) throws GameScoreException {
+        int score;
+        if(correctCount < 0 || incorrectCount < 0){
+            throw new GameScoreException(GameScoreException.INVALID_VALUE);
+        }
+        score = initialScore - (penaltyPoints * incorrectCount);
+        if(score < MINIMUNSCORE){
+            score = 0;
+        }
+        return score;
     }
     
 }
