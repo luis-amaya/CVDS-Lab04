@@ -65,11 +65,11 @@ import hangman.model.PowerScore;
  * POWER SCORE
  * #           |         Clase Equivalencia                                                        |    Resultado
  * -_-_-_-_-_-_|_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_|_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-
- * 1.          |         correctCount >= 0 && incorrectCount > 10               |    0
- * 2.          |         correctCount >= 0 && incorrectCount <= 10              |    100 - (incorrectCount * 10) 
- * 3.          |         incorrectCount < 0                                     |    Incorrect
- * 4.          |         correctCount < 0                                       |    Incorrect
- * 
+ * 1.          |         1 <correctCount <= 4 && incorrectCount > 1                                |    5^(correctCount) - 8*(incorrectCount)
+ * 2.          |         4 < correctCount && incorrectCount >= 0                                   |    500
+ * 3.          |         0 <= correctCount <= 1 && incorrectCount >= 1                             |    0
+ * 4.          |         incorrectCount < 0                                                        |    Incorrect
+ * 5.          |         correctCount < 0                                                          |    Incorrect
  * 
  * 
  * 
@@ -77,10 +77,11 @@ import hangman.model.PowerScore;
  * 
  * #           |         Clase Equivalencia                                                        |    Resultado
  * -_-_-_-_-_-_|_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_|_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-
- * 1.          |         correctCount = 0 && incorrectCount = 12                                   |    0
- * 2.          |         correctCount = 2 && incorrectCount = 1                                    |    90
- * 3.          |         incorrectCount = -1                                                       |    Incorrect
- * 4.          |         correctCount = -1                                                         |    Incorrect
+ * 1.          |         correctCount = 1 && incorrectCount = 1                                    |    0
+ * 2.          |         correctCount = 4 && incorrectCount = 0                                    |    500
+ * 3.          |         correctCount = 0 && incorrectCount = 1                                    |    0
+ * 4.          |         incorrectCount = -1                                                       |    Incorrect
+ * 5.          |         correctCount = -1                                                         |    Incorrect
  * 
  */
 
@@ -278,22 +279,108 @@ public class GameScoreTest{
 
     
     //POWER SCORE 1
-
+    @Test
+    public void powerScoreValidCorrectCountNIncorrectCountWithResultHigherThanZeroNLessThan500(){
+        try {
+            score = scoreToUse('p');
+            Assert.assertEquals(117, score.calculateScore(3, 1));
+        } catch (Exception e) {
+            Assert.fail("An exception occurred");
+        }
+    }
     //POWER SCORE 2
-
+    @Test
+    public void powerScoreValidCorrectCountNIncorrectCountWithResult500(){
+        try {
+            score = scoreToUse('p');
+            Assert.assertEquals(500, score.calculateScore(5, 0));
+        } catch (Exception e) {
+            Assert.fail("An exception occurred");
+        }
+    }
     //POWER SCORE 3
-    
+    @Test
+    public void powerScoreValidCorrectCountNIncorrectCountWithResultZero(){
+        try {
+            score = scoreToUse('p');
+            Assert.assertEquals(0, score.calculateScore(1, 3));
+        } catch (Exception e) {
+            Assert.fail("An exception occurred");
+        }
+    }
     //POWER SCORE 4
-
+    @Test
+    public void powerScoreInvalidCorrectCountNumber(){
+        try {
+            score = scoreToUse('p');
+            score.calculateScore(-4, 2);
+            Assert.fail("Should've throwed an exception");
+        } catch (Exception e) {
+            Assert.assertEquals(GameScoreException.INVALID_VALUE, e.getMessage());
+        }
+    }
     //POWER SCORE 5
-
+    @Test
+    public void powerScoreInvalidIncorrectCountNumber(){
+        try {
+            score = scoreToUse('p');
+            score.calculateScore(2, -4);
+            Assert.fail("Should've throwed an exception");
+        } catch (Exception e) {
+            Assert.assertEquals(GameScoreException.INVALID_VALUE, e.getMessage());
+        }
+    }
     //POWER SCORE BORDER 1
-
+    @Test
+    public void powerScoreBorderWithResultEqualToZero(){
+        try {
+            score = scoreToUse('p');
+            Assert.assertEquals(0, score.calculateScore(1, 1));
+        } catch (Exception e) {
+            Assert.fail("An exception occurred");
+        }
+    }
     //POWER SCORE BORDER 2
-
+    @Test
+    public void powerScoreBorderWithResultEqualTo500(){
+        try {
+            score = scoreToUse('p');
+            Assert.assertEquals(500, score.calculateScore(4, 0));
+        } catch (Exception e) {
+            Assert.fail("An exception occurred");
+        }
+    }
     //POWER SCORE BORDER 3
-
+    @Test
+    public void powerScoreBorderNumber3(){
+        try {
+            score = scoreToUse('p');
+            Assert.assertEquals(0,score.calculateScore(0, 1));
+        } catch (Exception e) {
+            Assert.fail("An exception occurred");
+        }
+    }
     //POWER SCORE BORDER 4
-
+    @Test
+    public void powerScoreBorderWithIncorrectCountLessThanZero(){
+        try {
+            score = scoreToUse('p');
+            score.calculateScore(2, -1);
+            Assert.fail("Should've throwed an exception");
+        } catch (Exception e) {
+            Assert.assertEquals(GameScoreException.INVALID_VALUE, e.getMessage());
+        }
+    }
     //POWER SCORE BORDER 5
+    @Test
+    public void powerScoreBorderWithCorrectCountLessThanZero(){
+        try {
+            score = scoreToUse('p');
+            score.calculateScore(-1, 2);
+            Assert.fail("Should've throwed an exception");
+        } catch (Exception e) {
+            Assert.assertEquals(GameScoreException.INVALID_VALUE, e.getMessage());
+        }
+    }
+    
 }
