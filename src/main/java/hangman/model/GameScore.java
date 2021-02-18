@@ -19,4 +19,6 @@ public interface GameScore {
      * @throws GameScoreException 
      */
     public int calculateScore(int correctCount, int incorrectCount) throws GameScoreException;
+
+    public int getInitialScore();
 }

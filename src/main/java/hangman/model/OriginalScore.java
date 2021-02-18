@@ -23,9 +23,13 @@ public class OriginalScore implements GameScore{
         }
         score = initialScore - (penaltyPoints * incorrectCount);
         if(score < MINIMUNSCORE){
-            score = 0;
+            score = MINIMUNSCORE;
         }
         return score;
+    }
+
+    public int getInitialScore(){
+        return initialScore;
     }
     
 }

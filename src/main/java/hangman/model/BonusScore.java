@@ -20,6 +20,14 @@ public class BonusScore implements GameScore{
         if(correctCount < 0 || incorrectCount < 0){
             throw new GameScoreException(GameScoreException.INVALID_VALUE);
         }
+        score = initialScore + (bonusPoints * correctCount) - (penaltyPoints * incorrectCount);
+        if(score < MINIMUNSCORE){
+            score = MINIMUNSCORE;
+        }
     return score;
+    }
+
+    public int getInitialScore(){
+        return initialScore;
     }
 }

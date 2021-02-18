@@ -11,11 +11,27 @@ package hangman.model;
  * @version 1.0 17/02/2021
  */
 public class PowerScore implements GameScore{
+    private final int initialScore = 0;
+    private final int bonusPoints = 5;
+    private final int penaltyPoints = 8;
+    private final int maxScore = 500;
 
     @Override
-    public int calculateScore(int correctCount, int incorrectCount) {
-        // TODO Auto-generated method stub
-        return 0;
+    public int calculateScore(int correctCount, int incorrectCount) throws GameScoreException {
+        int score;
+        if(correctCount < 0 || incorrectCount < 0){
+            throw new GameScoreException(GameScoreException.INVALID_VALUE);
+        }
+        score = (int)Math.pow(bonusPoints, correctCount) - (penaltyPoints * incorrectCount);
+        if(score > maxScore){
+            score = maxScore;
+        }else if(score < MINIMUNSCORE){
+            score = MINIMUNSCORE;
+        }
+        return score;
     }
     
+    public int getInitialScore(){
+        return initialScore;
+    }
 }
