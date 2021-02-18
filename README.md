@@ -127,3 +127,27 @@ Incorpore el Contenedor Liviano Guice dentro del proyecto:
 	* etc...
 * Para lo anterior, [puede basarse en el ejemplo dado como
   referencia](https://github.com/PDSW-ECI/LightweighContainers_DepenendecyInjectionIntro-WordProcessor).
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+## A continuación se mostrarán las capturas de pantalla del proceso del desarrollo del laboratorio
+
+# Primera parte
+
+Acá se realizó el clonamiento del proyecto asignado por el profesor.
+![Captura1](https://github.com/luis-amaya/CVDS-Lab04/blob/master/img/Capture1.PNG)
+
+Acá se evidencia que las pruebas realizadas han funcionado exitosamente.
+![Captura2](https://github.com/luis-amaya/CVDS-Lab04/blob/master/img/Capture2.PNG)
+
+# Segunda parte
+En las siguientes capturas, vamos a evidenciar cómo funciona de manera correcta el juego y el sistema de puntuación.
+
+![Captura3](https://github.com/luis-amaya/CVDS-Lab04/blob/master/img/Capture3.PNG)
+![Captura4](https://github.com/luis-amaya/CVDS-Lab04/blob/master/img/Capture4.PNG)
+![Captura5](https://github.com/luis-amaya/CVDS-Lab04/blob/master/img/Capture5.PNG)
+![Captura6](https://github.com/luis-amaya/CVDS-Lab04/blob/master/img/Capture6.PNG)
+![Captura7](https://github.com/luis-amaya/CVDS-Lab04/blob/master/img/Capture7.PNG)
+![Captura8](https://github.com/luis-amaya/CVDS-Lab04/blob/master/img/Capture8.PNG)
+![Captura9](https://github.com/luis-amaya/CVDS-Lab04/blob/master/img/Capture9.PNG)
+![Captura10](https://github.com/luis-amaya/CVDS-Lab04/blob/master/img/Capture10.PNG)
+![Captura11](https://github.com/luis-amaya/CVDS-Lab04/blob/master/img/Capture11.PNG)
