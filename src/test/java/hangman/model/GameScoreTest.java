@@ -1,5 +1,7 @@
 package hangman.model;
 
+import static org.junit.Assert.assertEquals;
+
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -123,10 +125,10 @@ public class GameScoreTest{
 
     //ORIGINAL SCORE 3
     @Test
-    public void wrongCorrectCountNumber(){
+    public void originalScoreWrongCorrectCountNumber(){
         try {
             score = scoreToUse('o');
-            score.calculateScore(-1, 2);
+            score.calculateScore(-4, 2);
             Assert.fail("Should've throwed an exception");
         } catch (Exception e) {
             Assert.assertEquals(GameScoreException.INVALID_VALUE, e.getMessage());
@@ -134,10 +136,10 @@ public class GameScoreTest{
     }
     //ORIGINAL SCORE 4
     @Test
-    public void wrongIncorrectCountNumber(){
+    public void originalScoreWrongIncorrectCountNumber(){
         try {
             score = scoreToUse('o');
-            score.calculateScore(2, -1);
+            score.calculateScore(2, -4);
             Assert.fail("Should've throwed an exception");
         } catch (Exception e) {
             //TODO: handle exception
@@ -145,7 +147,7 @@ public class GameScoreTest{
     }
     //ORIGINAL SCORE BORDER 1
     @Test
-    public void validateOriginalScoreBorderWithResultZero(){
+    public void originalScoreBorderWithResultZero(){
         try {
             score = scoreToUse('o');
             Assert.assertEquals(0, score.calculateScore(0, 12));
@@ -155,7 +157,7 @@ public class GameScoreTest{
     }
     //ORIGINAL SOCRE BORDER 2
     @Test
-    public void validateOriginalScoreBorderWithResultHigherThanZero(){
+    public void originalScoreBorderWithResultHigherThanZero(){
         try {
             score = scoreToUse('o');
             Assert.assertEquals(90, score.calculateScore(2, 1));
@@ -165,7 +167,7 @@ public class GameScoreTest{
     }
     //ORIGINAL SCORE BORDER 3
     @Test
-    public void validateOriginalScoreborderWithIncorrectCountLessThanZero(){
+    public void originalScoreBorderWithIncorrectCountLessThanZero(){
         try {
             score = scoreToUse('o');
             score.calculateScore(2, -1);
@@ -176,7 +178,7 @@ public class GameScoreTest{
     }
     //ORIGINAL SCORE BORDER 4
     @Test
-    public void validateOriginalScoreBorderWithCorrectCountLessThanZero(){
+    public void originalScoreBorderWithCorrectCountLessThanZero(){
         try {
             score = scoreToUse('o');
             score.calculateScore(-1, 2);
@@ -188,18 +190,110 @@ public class GameScoreTest{
 
 
     //BONUS SCORE 1
-
+    @Test 
+    public void bonusScoreCorrectCountNIncorrectCountWithResultHigherThanZero(){
+        try {
+            score = scoreToUse('b');
+            assertEquals(25, score.calculateScore(3, 1));
+        } catch (Exception e) {
+            Assert.fail("An exception occurred");
+        }
+    }
     //BONUS SCORE 2
-
+    @Test
+    public void bonusScoreCorrectCountNincorrectCountWithResultZero(){
+        try {
+            score = scoreToUse('b');
+            assertEquals(0, score.calculateScore(0, 1));
+        } catch (Exception e) {
+            Assert.fail("An exception occurred");
+        }
+    }
     //BONUS SCORE 3
-
+    @Test
+    public void bonusScoreWrongCorrectCountNumber(){
+        try {
+            score = scoreToUse('b');
+            score.calculateScore(-6, 2);
+            Assert.fail("Should've throwed an exception");
+        } catch (Exception e) {
+            Assert.assertEquals(GameScoreException.INVALID_VALUE, e.getMessage());
+        }
+    }
     //BONUS SCORE 4
-
+    @Test
+    public void bonusScoreWrongIncorrectCountNumber(){
+        try {
+            score = scoreToUse('b');
+            score.calculateScore(2, -8);
+            Assert.fail("Should've throwed an exception");
+        } catch (Exception e) {
+            Assert.assertEquals(GameScoreException.INVALID_VALUE, e.getMessage());
+        }
+    }
     //BONUS SCORE BORDER 1
-
+    @Test
+    public void bonusScoreBorderWithResultHigherThanZero(){
+        try {
+            score = scoreToUse('b');
+            Assert.assertEquals(15, score.calculateScore(2, 1));
+        } catch (Exception e) {
+            Assert.fail("An exception occurred");
+        }
+    }
     //BONUS SCORE BORDER 2
-
+    @Test
+    public void bonusScoreBorderWithResultEqualToZero(){
+        try {
+            score = scoreToUse('b');
+            Assert.assertEquals(0, score.calculateScore(1, 2));
+        } catch (Exception e) {
+            Assert.fail("An exception occurred");
+        }
+    }
     //BONUS SOCRE BORDER 3
-
+    @Test
+    public void bonusScoreBorderWithIncorrectCountLessThanZero(){
+        try {
+            score = scoreToUse('b');
+            score.calculateScore(2, -1);
+            Assert.fail("Should've throwed an exception");
+        } catch (Exception e) {
+            Assert.assertEquals(GameScoreException.INVALID_VALUE, e.getMessage());
+        }
+    }
     //BONUS SOCRE BORDER 4
+    @Test
+    public void bonusScoreBorderWithCorrectCountLessThanZero(){
+        try {
+            score = scoreToUse('b');
+            score.calculateScore(2, -1);
+            Assert.fail("Should've throwed an exception");
+        } catch (Exception e) {
+            Assert.assertEquals(GameScoreException.INVALID_VALUE, e.getMessage());
+        }
+    }
+
+
+
+    
+    //POWER SCORE 1
+
+    //POWER SCORE 2
+
+    //POWER SCORE 3
+    
+    //POWER SCORE 4
+
+    //POWER SCORE 5
+
+    //POWER SCORE BORDER 1
+
+    //POWER SCORE BORDER 2
+
+    //POWER SCORE BORDER 3
+
+    //POWER SCORE BORDER 4
+
+    //POWER SCORE BORDER 5
 }

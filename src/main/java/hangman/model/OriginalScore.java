@@ -12,7 +12,6 @@ package hangman.model;
 public class OriginalScore implements GameScore{
 
     private final int initialScore = 100;
-    private final int bonusPoints = 0;
     private final int penaltyPoints = 10;
     
 
